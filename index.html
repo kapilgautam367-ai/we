@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Looks Travel and Tours</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:#0b1c2c;
+    color:white;
+}
+
+/* HEADER */
+header{
+    display:flex;
+    justify-content:space-between;
+    padding:15px 30px;
+    background:#111;
+    align-items:center;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo img{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+    padding:30px;
+}
+
+/* CONTAINER */
+.container{
+    width:85%;
+    margin:auto;
+}
+
+/* CARD */
+.card{
+    background:white;
+    color:black;
+    padding:20px;
+    border-radius:12px;
+    margin-top:20px;
+}
+
+/* INPUT */
+input,select{
+    width:100%;
+    padding:10px;
+    margin:5px 0;
+}
+
+/* BUTTON */
+button{
+    width:100%;
+    padding:12px;
+    background:orange;
+    border:none;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+/* HIDDEN RETURN */
+.hidden{
+    display:none;
+}
+
+/* SERVICES */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+.box{
+    background:#fff;
+    color:black;
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    background:black;
+    margin-top:40px;
+}
+
+/* WHATSAPP */
+.whatsapp{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    background:green;
+    padding:15px;
+    border-radius:50%;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t39.30808-6/363808706_858023009657664_3175563260188208696_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=m8f4xnsaN6sQ7kNvwHNbHQj&_nc_oc=Adquyhr2p24qMCuT-0PO4NvJnvBAXIcWOY8TG6VbfURq-k4zNnGXa_scDfYxFxWO7VHkikOlzvFIKP8RekjKzmqR&_nc_zt=23&_nc_ht=scontent.fktm19-1.fna&_nc_gid=SYUSQZBC2tSgSqsJupWolg&_nc_ss=7a3a8&oh=00_Af0AJNmYvo2LAa5cNvl5btoh5ekt9xkfuB5NxJrfbCtcCw&oe=69E8F9D6">
+        <h3>Looks Travel and Tours</h3>
+    </div>
+</header>
+
+<div class="hero">
+    <h1>Book Your Flight Instantly</h1>
+    <p>Simple • Fast • Secure</p>
+</div>
+
+<div class="container">
+
+<!-- BOOKING -->
+<div class="card">
+    <h2>Flight Booking</h2>
+
+    <select id="trip" onchange="tripChange()">
+        <option value="one">One Way</option>
+        <option value="round">Round Trip</option>
+    </select>
+
+    <input id="from" placeholder="From">
+    <input id="to" placeholder="To">
+
+    <label>Departure Date</label>
+    <input id="depart" type="date">
+
+    <div id="returnBox" class="hidden">
+        <label>Return Date</label>
+        <input id="return" type="date">
+    </div>
+
+    <input id="name" placeholder="Full Name">
+    <input id="phone" placeholder="Phone Number">
+
+    <select id="class">
+        <option>Economy</option>
+        <option>Business</option>
+        <option>First Class</option>
+    </select>
+
+    <select id="baggage">
+        <option>0 KG</option>
+        <option>15 KG</option>
+        <option>30 KG</option>
+        <option value="1 PC">1 PC</option>
+        <option value="2 PC">2 PC</option>
+    </select>
+
+    <button onclick="book()">Confirm Booking</button>
+
+    <div id="result"></div>
+</div>
+
+<!-- ABOUT -->
+<div class="card">
+    <h2>About Us</h2>
+    <p>
+        Looks Travel and Tours is a premium global travel company providing safe and affordable flight booking services worldwide.
+    </p>
+</div>
+
+<!-- SERVICES -->
+<div class="card">
+    <h2>Our Services</h2>
+
+    <div class="grid">
+        <div class="box">✈️ Flights</div>
+        <div class="box">🏨 Hotels</div>
+        <div class="box">🚗 Transport</div>
+        <div class="box">🌍 Tours</div>
+        <div class="box">💼 Business Travel</div>
+        <div class="box">🎫 Ticket Support</div>
+    </div>
+</div>
+
+<!-- CONTACT -->
+<div class="card">
+    <h2>Contact Us</h2>
+     <a href="tel +977 9762219660">📞 97612219660</a>
+    <p>📞 821058055120</p>
+</div>
+
+</div>
+
+<footer>
+    © 2026 Looks Travel and Tours
+</footer>
+
+<a class="whatsapp" href="https://wa.me/97612219660">💬</a>
+
+<script>
+function tripChange(){
+    let t = document.getElementById("trip").value;
+    let box = document.getElementById("returnBox");
+
+    if(t === "round"){
+        box.classList.remove("hidden");
+    } else {
+        box.classList.add("hidden");
+    }
+}
+
+function book(){
+
+    let trip = document.getElementById("trip").value;
+    let from = document.getElementById("from").value;
+    let to = document.getElementById("to").value;
+    let depart = document.getElementById("depart").value;
+    let ret = document.getElementById("return") ? document.getElementById("return").value : "";
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let cls = document.getElementById("class").value;
+    let baggage = document.getElementById("baggage").value;
+
+    let message =
+`✈️ NEW FLIGHT BOOKING REQUEST
+
+👤 Name: ${name}
+📞 Phone: ${phone}
+
+🛫 Trip Type: ${trip}
+From: ${from}
+To: ${to}
+
+📅 Departure: ${depart}
+📅 Return: ${ret ? ret : "N/A"}
+
+💺 Class: ${cls}
+🧳 Baggage: ${baggage}
+
+--------------------------------
+Please confirm availability & price.`;
+
+    let whatsappNumber = "97797612219660"; // your number
+
+    let url = "https://wa.me/" + +9779762219660 + "?text=" + encodeURIComponent(message);
+
+    window.open(url, "_blank");
+}
+
+
+</script>
+
+</body>
+</html>
